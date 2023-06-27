@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @composer %>
+
+<div>
+  <%= link_to "Edit this composer", edit_composer_path(@composer) %> |
+  <%= link_to "Back to composers", composers_path %>
+
+  <%= button_to "Destroy this composer", @composer, method: :delete %>
+</div>

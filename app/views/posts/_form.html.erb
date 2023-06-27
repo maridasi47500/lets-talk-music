@@ -1,0 +1,48 @@
+<%= form_with(model: post,html:{autocomplete:"off",id:"my-post-form"}) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div hidden id="nbcomments"><%= post.comments.length %></div>
+  <div>
+  <a href="" id="addcomment1">ajouter un commentaire</a>
+  </div>
+  <div id="mycomments">
+  </div>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :vid, style: "display: block" %>
+    <%= form.text_field :vid %>
+  </div>
+
+  <div>
+    <%= form.label :room_id, style: "display: block" %>
+    <%= form.number_field :room_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

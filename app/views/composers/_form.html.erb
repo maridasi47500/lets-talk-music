@@ -1,0 +1,32 @@
+<%= form_with(model: composer) do |form| %>
+  <% if composer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(composer.errors.count, "error") %> prohibited this composer from being saved:</h2>
+
+      <ul>
+        <% composer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.text_field :image %>
+  </div>
+
+  <div>
+    <%= form.label :comment_id, style: "display: block" %>
+    <%= form.number_field :comment_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

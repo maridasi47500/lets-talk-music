@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Composers</h1>
+
+<div id="composers">
+  <% @composers.each do |composer| %>
+    <%= render composer %>
+    <p>
+      <%= link_to "Show this composer", composer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New composer", new_composer_path %>

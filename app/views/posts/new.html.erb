@@ -1,0 +1,26 @@
+<h1>New post</h1>
+<div id="savemyvid">
+<div class="left">
+    <div id="startButton" class="button">Start Recording</div>
+      <h2>Preview</h2>
+        <video id="preview" width="160" height="120" autoplay muted></video>
+</div>
+
+<div class="right">
+    <div id="stopButton" class="button">Stop Recording</div>
+      <h2>Recording</h2>
+        <video id="recording" width="160" height="120" controls></video>
+          <a id="downloadButton" class="button"> Download </a>
+</div>
+</div>
+
+
+<%= render "form", post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "Back to posts", posts_path %>
+</div>
+<script>
+</script>

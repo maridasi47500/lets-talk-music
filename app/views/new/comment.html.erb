@@ -1,0 +1,37 @@
+<p>comment <%=params[:nb].to_i + 1%>
+
+<div hidden data-id="<%=params[:nb]%>" class="nbcomposer">0</div>
+<div hidden data-id="<%=params[:nb]%>" class="nbpiece">0</div>
+<div hidden data-id="<%=params[:nb]%>" class="nbconcert">0</div>
+ <div class="autocomplete" style="width:300px;">
+       <input id="myComposer" type="text" name="myComposer" placeholder="Composer Name">
+         </div>
+<a href="" data-id="<%=params[:nb]%>" class="addcomposer">add composer</a>
+ <div class="autocomplete" style="width:300px;">
+       <input id="myPiece" type="text" name="myPiece" placeholder="Piece title">
+         </div>
+<a href="" data-id="<%=params[:nb]%>" class="addpiece">add piece</a>
+ <div class="autocomplete" style="width:300px;">
+       <input id="myConcert" type="text" name="myConcert" placeholder="Concert title">
+         </div>
+<a href="" data-id="<%=params[:nb]%>" class="addconcert">add concert</a>
+</p>
+<%=fields_for(:post,Post.new, include_id:false) do |f|%>
+<%=f.fields_for(:comments,Comment.new, :include_id => false,child_index:params[:nb]) do |form|%>
+   <div>
+         <%= form.label :title, style: "display: block" %>
+             <%= form.text_field :title %>
+               </div>
+
+                 <div>
+                       <%= form.label :content, style: "display: block" %>
+                           <%= form.text_area :content %>
+                             </div>
+<%end%>
+<%end%>
+<div class="composers" data-id="<%=params[:nb]%>">
+</div>
+<div class="pieces" data-id="<%=params[:nb]%>">
+</div>
+<div class="concerts" data-id="<%=params[:nb]%>">
+</div>
