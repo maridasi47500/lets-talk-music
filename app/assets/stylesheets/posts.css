@@ -35,11 +35,11 @@
 						   text-shadow: 1px 1px 0px black;
 					   }
 * { box-sizing: border-box; }
-* body {
-	*   font: 16px Arial;
-	*   }
-	*   .autocomplete {
-		*     /*the container must be positioned relative:*/
+body {
+	   font: 16px Arial;
+	   }
+	.autocomplete {
+		     /*the container must be positioned relative:*/
 		  position: relative;
 		    display: inline-block;
 	    }

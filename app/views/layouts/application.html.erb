@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <%= javascript_importmap_tags %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -12,8 +13,15 @@
   </head>
 
   <body>
+    <nav>
+    <%=link_to "bienvenue", root_path%>
+    <%=link_to "composers", composers_path%>
+    <%=link_to "pieces", pieces_path%>
+    <%=link_to "concerts", concerts_path%>
+    </nav>
+
     <%= yield %>
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
 
   </body>
 </html>

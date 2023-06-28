@@ -3,7 +3,7 @@ class PiecesController < ApplicationController
 
   # GET /pieces or /pieces.json
   def index
-    @pieces = Piece.all.where("lower(title) like ?",params[:name].downcase)
+    @pieces = Piece.all.where("lower(title) like ?","%"+params[:name].to_s.downcase+"%")
   end
 
   # GET /pieces/1 or /pieces/1.json

@@ -3,7 +3,7 @@ class ConcertsController < ApplicationController
 
   # GET /concerts or /concerts.json
   def index
-    @concerts = Concert.all.where("lower(title) like ?",params[:name].downcase)
+    @concerts = Concert.all.where("lower(title) like ?","%"+params[:name].to_s.downcase+"%")
   end
 
   # GET /concerts/1 or /concerts/1.json

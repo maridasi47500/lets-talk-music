@@ -120,6 +120,28 @@ clearInterval(intervalFwd);
 
 };
 if ($("#savemyvid").length > 0){
+        $("[name=myComposer]").each(function(){
+		var input=$(this)[0];
+
+        $.ajax({url:"/composers.json",success:function(data){
+        autocomplete(input, data.map(x=>x.name));
+        }
+        });
+        });
+        $("[name=myConcert]").each(function(){
+		var input=$(this)[0];
+        $.ajax({url:"/concerts.json",success:function(data){
+        autocomplete(input, data.map(x=>x.title));
+        }
+        });
+        });
+        $("[name=myPiece]").each(function(){
+		var input=$(this)[0];
+        $.ajax({url:"/pieces.json",success:function(data){
+        autocomplete(input, data.map(x=>x.title));
+        }
+        });
+        });
 	console.log("myjs");
 	function addcomment(){
 		$.ajax({url:"/new/comment",data:{nb:$("#nbcomments").html()},success:function(data){
@@ -193,6 +215,15 @@ if ($("#savemyvid").length > 0){
 			        .then(() => startRecording(preview.captureStream(), recordingTimeMS))
 			        .then((recordedChunks) => {
 					        let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
+					 var formData=new FormData($("#my-post-form")[0]);
+					    var recording=new Blob([blob]);
+					    formData.append("vid",recording);
+
+					    $.ajax({type:"POST",url:"/posts",
+						        processData: false,
+						        contentType: false,
+						           data: formData
+						         });
 					        recording.src = URL.createObjectURL(recordedBlob);
 					        downloadButton.href = recording.src;
 					        downloadButton.download = "RecordedVideo.webm";
@@ -219,7 +250,12 @@ if ($("#savemyvid").length > 0){
 			    },
 		  false
 	);
-	}catch(e){console.log(e)}
+	}catch(e){console.log(e)};
+}
+
+
+}
+
 function autocomplete(inp, arr) {
 	  /*the autocomplete function takes two arguments,
 	   *   the text field element and an array of possible autocompleted values:*/
@@ -317,20 +353,6 @@ function autocomplete(inp, arr) {
                                                                                                                                                                                                      });
                                                                                                                                                                                                       } 
 
-}
-//example autocomplete(document.getElementById("myInput"), countries);
-$.ajax({url:"/composers.json",success:function(data){
-autocomplete(document.getElementById("myComposer"), data.map(x=>x.name));
-}
-});
-$.ajax({url:"/concerts.json",success:function(data){
-autocomplete(document.getElementById("myConcert"), data.map(x=>x.title));
-}
-});
-$.ajax({url:"/pieces.json",success:function(data){
-autocomplete(document.getElementById("myPiece"), data.map(x=>x.title));
-}
-});
 
 
-}
+

@@ -1,0 +1,16 @@
+<p>composer <%=params[:nb].to_i + 1%>
+
+<%=fields_for(:post,Post.new, include_id:false) do |f|%>
+<%=f.fields_for(:comments,Comment.new, :include_id => false,child_index:params[:nbcomment]) do |form|%>
+   <div>
+     <%=%>
+     <%=form.collection_check_boxes(:composer_ids, Composer.where(name:params[:name]), :id, :name, include_hidden: false) do |b| %>
+       <%=b.label(class: "radio_button") do%> <%= b.check_box(checked:true,class: "radio_button")%>
+         <%=b.text%>
+       <%end%>
+     <%end%>
+
+               </div>
+
+<%end%>
+<%end%>

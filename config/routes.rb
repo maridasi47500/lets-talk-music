@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'new/comment'
+  get 'mynew/comment', to:"new#comment"
+  get 'mynew/concert', to:"new#concert"
+  get 'mynew/piece', to:"new#piece"
+  get 'mynew/composer', to:"new#composer"
   resources :comments
   root "posts#index"
   resources :concerts

@@ -3,7 +3,7 @@ class ComposersController < ApplicationController
 
   # GET /composers or /composers.json
   def index
-    @composers = Composer.all.where("lower(name) like ?",params[:name].downcase)
+    @composers = Composer.all.where("lower(name) like ?","%"+params[:name].to_s.downcase+"%")
   end
 
   # GET /composers/1 or /composers/1.json
