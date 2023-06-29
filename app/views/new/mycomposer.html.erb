@@ -1,0 +1,12 @@
+
+<%=fields_for(:piece,Piece.new, include_id:false) do |f|%>
+   <div>
+     <%=f.collection_radio_buttons(:composer_id, Composer.where(name:params[:name]), :id, :name, include_hidden: false) do |b| %>
+       <%=b.label(class: "radio_button") do%> <%= b.radio_button(checked:true,class: "radio_button")%>
+         <%=render b.object%>
+       <%end%>
+     <%end%>
+
+               </div>
+
+<%end%>

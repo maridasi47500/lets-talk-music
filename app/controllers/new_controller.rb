@@ -8,6 +8,9 @@ class NewController < ApplicationController
   def concert
     render layout: false
   end
+  def mycomposer
+    render layout: false
+  end
   def composer
     render layout: false
   end

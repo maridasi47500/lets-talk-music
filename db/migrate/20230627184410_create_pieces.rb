@@ -4,7 +4,6 @@ class CreatePieces < ActiveRecord::Migration[7.0]
       t.integer :composer_id
       t.string :title
       t.string :image
-      t.integer :comment_id
 
       t.timestamps
     end

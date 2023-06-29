@@ -1,17 +1,12 @@
-<div id="<%= dom_id piece %>">
+<div class="piececard" id="<%= dom_id piece %>">
+   <img src="/uploads/<%= piece.image %>" class="myimage" />
   <p>
-    <strong>Composer:</strong>
-    <%= piece.composer_id %>
+    <%= piece.composer.name %>
   </p>
 
   <p>
-    <strong>Image:</strong>
-    <%= piece.image %>
+    <%= piece.title %>
   </p>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= piece.comment_id %>
-  </p>
 
 </div>

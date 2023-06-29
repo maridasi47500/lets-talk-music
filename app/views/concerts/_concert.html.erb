@@ -1,17 +1,8 @@
-<div id="<%= dom_id concert %>">
+<div class="concertcard" id="<%= dom_id concert %>">
+   <img src="/uploads/<%= concert.image %>" class="myimage" />
   <p>
-    <strong>Title:</strong>
     <%= concert.title %>
   </p>
 
-  <p>
-    <strong>Image:</strong>
-    <%= concert.image %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= concert.comment_id %>
-  </p>
 
 </div>

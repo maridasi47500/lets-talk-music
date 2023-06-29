@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'mynew/concert', to:"new#concert"
   get 'mynew/piece', to:"new#piece"
   get 'mynew/composer', to:"new#composer"
+  get 'mynew/mycomposer', to:"new#mycomposer"
   resources :comments
   root "posts#index"
   resources :concerts

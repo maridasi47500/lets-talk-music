@@ -28,14 +28,64 @@
   </div>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
+    <%=form.fields_for(:comments,post.comments, :include_id => false) do |ff|%>
+      <p> comment <%=ff.index.to_i+1%>
+    <div hidden data-id="<%=ff.index%>" class="nbcomposer"><%=ff.object.composers.length%></div>
+    <div hidden data-id="<%=ff.index%>" class="nbpiece"><%=ff.object.pieces.length%></div>
+    <div hidden data-id="<%=ff.index%>" class="nbconcert"><%=ff.object.concerts.length%></div>
+       <div class="autocomplete" style="width:300px;">
+       <input type="text" name="myComposer" placeholder="Composer Name" id='myComposer<%=params[:nb]%>'>
+               </div>
+               <a href="" data-id="<%=ff.index%>" onclick="$.ajax({url:'/mynew/composer',data:{nbcomment:<%=ff.index%>, nb:$('.nbcomposer[data-id=<%=params[:nb]%>]').html(),name:$('#myComposer<%=params[:nb]%>').val()},success:function(data){$('.nbcomposer[data-id=<%=params[:nb]%>]').html(Number($('.nbcomposer[data-id=<%=params[:nb]%>]').html())+1);$('.composers[data-id=<%=params[:nb]%>]').html(data);}});return false;" class="addcomposer">add composer</a>
+       <div class="autocomplete" style="width:300px;">
+         <input type="text" name="myPiece" placeholder="Piece title" id="myPiece<%=ff.index%>">
+               </div>
+               <a href="" data-id="<%=ff.index%>" onclick="$.ajax({url:'/mynew/piece',data:{nbpiece:<%=ff.index%>, nb:$('.nbpiece[data-id=<%=params[:nb]%>]').html(),name:$('#myPiece<%=params[:nb]%>').val()},success:function(data){$('.nbpiece[data-id=<%=params[:nb]%>]').html(Number($('.nbpiece[data-id=<%=params[:nb]%>]').html())+1);$('.pieces[data-id=<%=params[:nb]%>]').html(data);}});return false;"  class="addpiece">add piece</a>
+       <div class="autocomplete" style="width:300px;">
+         <input type="text" name="myConcert" placeholder="Concert title" id="myConcert<%=ff.index%>">
+               </div>
+               <a href="" data-id="<%=ff.index%>" onclick="$.ajax({url:'/mynew/concert',data:{nbconcert:<%=ff.index%>, nb:$('.nbconcert[data-id=<%=params[:nb]%>]').html(),name:$('#myConcert<%=params[:nb]%>').val()},success:function(data){$('.nbconcert[data-id=<%=params[:nb]%>]').html(Number($('.nbconcert[data-id=<%=params[:nb]%>]').html())+1);$('.concerts[data-id=<%=params[:nb]%>]').html(data);}});return false;"  class="addconcert">add concert</a></p>
+         <div>
+                    <%= ff.label :title, style: "display: block" %>
+         <%= ff.text_field :title %>
+                        </div>
+
+                                         <div>
+                                                                  <%= ff.label :content, style: "display: block" %>
+                                                                                             <%= ff.text_area :content %>
+                                                                                                                          </div>
+                                                                                                                          <div class="composers" data-id="<%=ff.index%>">
+                                                                                                                            <%=ff.collection_check_boxes(:composer_ids, ff.object.composers, :id, :name, include_hidden: false) do |b| %>
+                                                                                                                                                        <%=b.label(class: "radio_button") do%> <%= b.check_box(checked:true,class: "radio_button")%>
+                                                                                                                                                                                      <%=render b.object%>
+                                                                                                                                                                                                                         <%end%>
+                                                                                                                                                                                                                                                                 <%end%>
+
+                                                                                                                          </div>
+                                                                                                                          <div class="pieces" data-id="<%=ff.index%>">
+                                                                                                                            <%=ff.collection_check_boxes(:piece_ids, ff.object.pieces, :id, :title, include_hidden: false) do |b| %>
+                                                                                                                                                        <%=b.label(class: "radio_button") do%> <%= b.check_box(checked:true,class: "radio_button")%>
+                                                                                                                                                                                      <%=render b.object%>
+                                                                                                                                                                                                                         <%end%>
+                                                                                                                                                                                                                                                                 <%end%>
+                                                                                                                          </div>
+                                                                                                                          <div class="concerts" data-id="<%=ff.index%>">
+                                                                                                                            <%=ff.collection_check_boxes(:concert_ids, ff.object.concerts, :id, :title, include_hidden: false) do |b| %>
+                                                                                                                                                        <%=b.label(class: "radio_button") do%> <%= b.check_box(checked:true,class: "radio_button")%>
+                                                                                                                                                                                      <%=render b.object%>
+                                                                                                                                                                                                                         <%end%>
+                                                                                                                                                                                                                                                                 <%end%>
+                                                                                                                          </div>
+                                                                                                             <%end%>
+
+  </div>
+  <div>
+    <%= form.hidden_field :user_id %>
   </div>
 
 
   <div>
-    <%= form.label :room_id, style: "display: block" %>
-    <%= form.number_field :room_id %>
+    <%= form.hidden_field :room_id %>
   </div>
 
   <div>

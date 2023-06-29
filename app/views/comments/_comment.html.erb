@@ -1,16 +1,15 @@
-<div id="<%= dom_id comment %>">
-  <p>
-    <strong>Post:</strong>
-    <%= comment.post_id %>
-  </p>
+<div class="comment" id="<%= dom_id comment %>">
+  <div class="stuff">
+    <%=render comment.composers%>
+    <%=render comment.pieces%>
+    <%=render comment.concerts%>
+  </div>
 
-  <p>
-    <strong>Title:</strong>
+  <h5>
     <%= comment.title %>
-  </p>
+  </5>
 
   <p>
-    <strong>Content:</strong>
     <%= comment.content %>
   </p>
 

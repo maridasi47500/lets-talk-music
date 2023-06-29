@@ -1,8 +1,8 @@
 <div id="<%= dom_id post %>">
   <div class="player">
       <video controls>
-            <source src="video/sintel-short.mp4" type="video/mp4">
-                <source src="video/sintel-short.mp4" type="video/webm">
+        <source src="/uploads/<%=post.vid%>" type="video/mp4">
+            <source src="/uploads/<%=post.vid%>" type="video/webm">
                     <!-- fallback contenu ici -->
                       </video>
                         <div class="controls">
@@ -17,28 +17,21 @@
                                                                   </div>
   </div>
 
-  <p>
-    <strong>Title:</strong>
+  <h5>
     <%= post.title %>
-  </p>
+  </h5>
 
   <p>
-    <strong>Content:</strong>
     <%= post.content %>
   </p>
+  <%=render post.comments%>
 
-  <p>
-    <strong>User:</strong>
+  <p hidden>
     <%= post.user_id %>
   </p>
 
-  <p>
-    <strong>Vid:</strong>
-    <%= post.vid %>
-  </p>
 
-  <p>
-    <strong>Room:</strong>
+  <p hidden>
     <%= post.room_id %>
   </p>
 

@@ -65,6 +65,6 @@ class PiecesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def piece_params
-      params.require(:piece).permit(:composer_id, :image, :comment_id)
+      params.require(:piece).permit(:composer_id, :image)
     end
 end

@@ -65,6 +65,6 @@ class ComposersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def composer_params
-      params.require(:composer).permit(:name, :image, :comment_id)
+      params.require(:composer).permit(:name, :image)
     end
 end

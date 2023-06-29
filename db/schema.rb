@@ -22,26 +22,38 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_184831) do
   create_table "composers", force: :cascade do |t|
     t.string "name"
     t.string "image"
-    t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "composerscomments", force: :cascade do |t|
+    t.integer "composer_id"
+    t.integer "comment_id"
   end
 
   create_table "concerts", force: :cascade do |t|
     t.string "title"
     t.string "image"
-    t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "concertscomments", force: :cascade do |t|
+    t.integer "concert_id"
+    t.integer "comment_id"
   end
 
   create_table "pieces", force: :cascade do |t|
     t.integer "composer_id"
     t.string "title"
     t.string "image"
-    t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "piecescomments", force: :cascade do |t|
+    t.integer "piece_id"
+    t.integer "comment_id"
   end
 
   create_table "posts", force: :cascade do |t|
