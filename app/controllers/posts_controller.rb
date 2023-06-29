@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         #format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
-        if !params[:vid]
+        if !post_params[:vid]
           redirect_to @post
         end 
         format.json { render :show, status: :created, location: @post }

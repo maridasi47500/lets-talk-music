@@ -218,7 +218,7 @@ if ($("#savemyvid").length > 0){
 					        let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
 					 var formData=new FormData($("#my-post-form")[0]);
 					    var recording=new Blob([blob]);
-					    formData.append("vid",recording);
+					    formData.append("post[vid]",recording);
 
 					    $.ajax({type:"POST",url:"/posts",
 						        processData: false,

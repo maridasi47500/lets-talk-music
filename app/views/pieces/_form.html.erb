@@ -14,7 +14,7 @@
    <div class="autocomplete" style="width:300px;" id="addacomposerforpiece">
       <input type="text" name="myComposer" placeholder="Composer Name" id='myComposer<%=params[:nb]%>'>
                </div>
-                        <a href="" data-id="<%=params[:nb]%>" onclick="$.ajax({url:'/mynew/mycomposer',success:function(data){$('.composers').append(data);}});return false;" class="addcomposer">add composer</a>
+               <a href="" data-id="<%=params[:nb]%>" onclick="$.ajax({data:{name:$('#myComposer').val()},url:'/mynew/mycomposer',success:function(data){$('.composers').append(data);}});return false;" class="addcomposer">add composer</a>
   <div id="composer_id">
      <%=form.collection_radio_buttons(:composer_id, Composer.where(id:piece.composer_id), :id, :name, include_hidden: false) do |b| %>
               <%=b.label(class: "radio_button") do%> <%= b.radio_button(checked:true,class: "radio_button")%>
@@ -26,6 +26,10 @@
   <div class="composers">
   </div>
 
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
   <div>
     <%= form.label :image, style: "display: block" %>
     <%= form.file_field :image %>

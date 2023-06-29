@@ -6,7 +6,7 @@
      <%=%>
      <%=form.collection_check_boxes(:composer_ids, Composer.where(name:params[:name]), :id, :name, include_hidden: false) do |b| %>
        <%=b.label(class: "radio_button") do%> <%= b.check_box(checked:true,class: "radio_button")%>
-         <%=b.text%>
+         <%=render b.object%>
        <%end%>
      <%end%>
 
